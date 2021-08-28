@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>測試</title>
+{% endblock %}
+{% block body %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">名稱</th>
+      <th scope="col">地址</th>
+      <th scope="col">房齡</th>
+      <th scope="col">類型</th>
+      <th scope="col">價格</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for info in infoList %}
+      <tr>
+        <td><a href = {{ info.link }}>{{ info.name }}</a></td>
+        <td>{{ info.addr }}</td>
+        <td>{{ info.year }}</td>
+        <td>{{ info.houseType }}</td>
+        <td>{{ info.price }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
