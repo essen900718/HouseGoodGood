@@ -42,7 +42,7 @@ def writeToFile():
                 f.writelines(['\n' + x.string() for x in l])
         cnt += 1
         curr = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        print(f'[INFO] {curr}: "houseData.txt" already updated {cnt}' + ('times.' if cnt > 1 else 'time.'))
+        print(f'[INFO] {curr}: "houseData.txt" already updated {cnt} ' + ('times.' if cnt > 1 else 'time.'))
     except Exception as e:
         print(e)
 
