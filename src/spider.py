@@ -46,20 +46,15 @@ class spider:
             addr = infoList[1][:-7]
             year = infoList[2][:-7]
             houseType = infoList[3][:-13]
-            l.append(houseInfoType(name, link, addr, year, houseType, price + '萬'))
+            l.append(houseInfoType([name, link, addr, year, houseType, price + '萬']))
 
         return l
-
-    def getDataFromSinyiByPage(self, start, end):
-        l = []
-        for i in range(start, end + 1):
-            tmp = self.getDataFromSinyi(i)
-            if tmp: l.extend(tmp)
-            else: break
-        return l
-
-    def getAllDataFromSinyi(self):
-        return self.getDataFromSinyiByPage(1, 999)
+    
+    def getLastIndexFromSinyi(self):
+        req = requests.get(self.url, headers = self.UA)
+        soup = BeautifulSoup(req.text, 'lxml')
+        node = soup.find('li', class_ = 'nextClassName')
+        return int(node.find_previous_sibling().text)
 
 if __name__ == '__main__':
     spi = spider()

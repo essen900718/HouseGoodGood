@@ -1,8 +1,10 @@
 {% extends 'layout.html' %}
 {% block head %}
-  <title>測試</title>
+  <title>資料庫</title>
 {% endblock %}
 {% block body %}
+  <h1>資料來源: <a href="https://www.sinyi.com.tw/buy/list/Taipei-city/Taipei-R-mrtline/03-mrt/default-desc/">信義房屋</a>
+    最後更新時間: {{ lastUpdateTime }}，資料筆數: {{ size }}</h1>
   <table class="table table-hover">
     <thead>
       <tr>
