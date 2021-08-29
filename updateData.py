@@ -27,7 +27,7 @@ def updateData():
 def crawler(page):
     global l
     # multithread
-    with concurrent.futures.ThreadPoolExecutor(max_workers = 80) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers = 50) as executor:
         tmp = executor.map(spi.getDataFromSinyi, page)
     l = [y for x in tmp if x for y in x]
 
