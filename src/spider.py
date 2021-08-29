@@ -11,7 +11,7 @@ class spider:
     def getDataFromSinyi(self, page):
         l = []
         req = requests.get(self.url + str(page), headers = self.UA)
-        soup = BeautifulSoup(req.text, 'html.parser')      
+        soup = BeautifulSoup(req.text, 'lxml')      
         
         houseNames = []
         links = []
