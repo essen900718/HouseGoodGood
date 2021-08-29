@@ -18,10 +18,10 @@ def updateData():
         crawler([i for i in range(1, lastIdx + 1)])
         lastUpdateTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         print(f'[INFO] {lastUpdateTime}: Data updated.')
-        writeToFile()
-        pushToHeroku()
         curr = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         print(f'[INFO] {curr}: It took {int(time.time() - t)} seconds to update this time.')
+        writeToFile()
+        pushToHeroku()
         time.sleep(60 * 60)
 
 def crawler(page):
