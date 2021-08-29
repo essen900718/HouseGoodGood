@@ -1,4 +1,5 @@
 import requests
+import time
 from src.dataType import houseInfoType
 from bs4 import BeautifulSoup
 
@@ -47,7 +48,8 @@ class spider:
             year = infoList[2][:-7]
             houseType = infoList[3][:-13]
             l.append(houseInfoType([name, link, addr, year, houseType, price + '萬']))
-
+        curr = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        print(f'[INFO] {curr}: Get {page} page.')
         return l
     
     def getLastIndexFromSinyi(self):
