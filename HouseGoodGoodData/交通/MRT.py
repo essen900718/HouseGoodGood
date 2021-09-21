@@ -3,7 +3,7 @@ class LAL:
     Y = ''
 
 
-class RubbishTruckData:
+class MRT:
     def __init__(self) -> None:
         self.address = []
         with open('臺北捷運車站出入口座標.csv', 'r', encoding="utf-8") as self.infile:

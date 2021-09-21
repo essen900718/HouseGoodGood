@@ -24,6 +24,7 @@ class RubbishTruckData:
                 temp = LAL()
                 temp.X = line[point1+1:point2]
                 temp.Y = line[point2+1:point3]
+                self.address.append(temp)
 
     def GetAddress(self):
         return self.address
