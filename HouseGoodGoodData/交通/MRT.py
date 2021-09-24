@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 class LAL:
     X = ''
     Y = ''
@@ -6,7 +9,7 @@ class LAL:
 class MRT:
     def __init__(self) -> None:
         self.address = []
-        with open('臺北捷運車站出入口座標.csv', 'r', encoding="utf-8") as self.infile:
+        with open('臺北捷運車站出入口座標.txt', 'r', encoding="utf-8") as self.infile:
             #data = self.infile
             point1 = 0
             point2 = 0
@@ -22,8 +25,13 @@ class MRT:
                         point2 = point3
                         point3 = Word
                 temp = LAL()
-                temp.X = line[point1+1:point2]
-                temp.Y = line[point2+1:point3]
+                temp.X = line[point2+1:point3]
+                temp.Y = line[point3+1:len(line)-1]
+                self.address.append(temp)
 
     def GetAddress(self):
         return self.address
+
+
+# T = MRT()
+# print(T.GetAddress()[0].Y)

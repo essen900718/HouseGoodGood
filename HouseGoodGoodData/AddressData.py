@@ -1,5 +1,6 @@
-from 醫療.Hospital import Hospital
-from 醫療.care_center import CareCenterData
+from H.Hospital import Hospital
+#import Hospital
+from H.care_center import CareCenterData
 from 教育.college import College
 from 治安.Robber import RobberData
 from 治安.SecurityCamera import SecurityCameraData
@@ -15,7 +16,7 @@ class Taipei:
         self.college_ = College()
         self.robber_ = RobberData()
         self.camera_ = SecurityCameraData()
-        self.mrt_ = MRT()
+        #self.mrt_ = MRT()
         self.truck = RubbishTruckData()
         self.S = SelectData()
 
@@ -54,3 +55,7 @@ class Taipei:
     def EF(self):
         return self.S.GetAddress()
         # self.S.GetAddress()[i]
+
+
+T = Taipei()
+print(T.hospital()[0].name)

@@ -29,8 +29,8 @@ class RobberData:
         return self.time
 
 
-Test = RobberData()
-temp = Test.GetAddress()
-# for i in range(10):
-#     print(i, temp[i].address)
-print(len(temp))
+# Test = RobberData()
+# temp = Test.GetAddress()
+# # for i in range(10):
+# #     print(i, temp[i].address)
+# print(len(temp))

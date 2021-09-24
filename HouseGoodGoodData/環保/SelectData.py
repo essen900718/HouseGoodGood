@@ -19,6 +19,6 @@ class SelectData:
         return self.address
 
 
-Test = SelectData()
-Data = Test.GetAddress()
-print(Data[0])
+# Test = SelectData()
+# Data = Test.GetAddress()
+# print(Data[0])

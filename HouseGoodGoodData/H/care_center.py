@@ -1,7 +1,7 @@
-class College:
+class CareCenterData:
     def __init__(self) -> None:
         self.address = []
-        with open('110年社區大學聯絡資訊1100412.txt', 'r', encoding='utf-8') as self.infile:
+        with open('日間照顧中心.csv', 'r', encoding="utf-8") as self.infile:
             #data = self.infile
             point1 = 0
             point2 = 0
@@ -12,15 +12,11 @@ class College:
                 if not line:
                     break
                 for Word in range(len(line)):
-                    if line[Word] == '\t':
+                    if line[Word] == ',':
                         point1 = point2
                         point2 = point3
                         point3 = Word
-                self.address.append(line[point3+1:len(line)-1])
-                # print(self.address)
+                self.address.append(line[point2+1:point3])
 
     def GetAddress(self):
         return self.address
-
-
-#T = College()
