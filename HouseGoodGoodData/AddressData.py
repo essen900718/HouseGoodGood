@@ -16,7 +16,7 @@ class Taipei:
         self.college_ = College()
         self.robber_ = RobberData()
         self.camera_ = SecurityCameraData()
-        #self.mrt_ = MRT()
+        self.mrt_ = MRT()
         self.truck = RubbishTruckData()
         self.S = SelectData()
 
