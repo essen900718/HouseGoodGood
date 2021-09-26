@@ -9,7 +9,7 @@ class HospitalDataType:
 class Hospital:
     def __init__(self) -> None:
         self.Data = []
-        Temp_ = pd.read_csv('C:/Users/88690/Desktop/比賽/HouseGoodGood/UserData/H/臺北市公私立醫院.csv')
+        Temp_ = pd.read_csv('臺北市公私立醫院.csv')
         Temp = Temp_.values.tolist()
         for i in range(len(Temp)):
             L = HospitalDataType()

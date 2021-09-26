@@ -9,7 +9,7 @@ class LAL:
 class MRT:
     def __init__(self) -> None:
         self.address = []
-        with open('C:/Users/88690/Desktop/比賽/HouseGoodGood/UserData/交通/臺北捷運車站出入口座標.txt', 'r', encoding="utf-8") as self.infile:
+        with open('UserData/交通/臺北捷運車站出入口座標.txt', 'r', encoding="utf-8") as self.infile:
             #data = self.infile
             point1 = 0
             point2 = 0

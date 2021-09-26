@@ -6,7 +6,7 @@ class LAL:
 class RubbishTruckData:
     def __init__(self) -> None:
         self.address = []
-        with open('/Users/88690/Desktop/比賽/HouseGoodGood/UserData/交通/垃圾車清運點位.csv', 'r', encoding="utf-8") as self.infile:
+        with open('UserData/交通/垃圾車清運點位.csv', 'r', encoding="utf-8") as self.infile:
             #data = self.infile
             point1 = 0
             point2 = 0

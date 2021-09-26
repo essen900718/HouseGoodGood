@@ -2,7 +2,7 @@ class RobberData:
     def __init__(self) -> None:
         self.address = []
         self.time = []
-        with open('C:/Users/88690/Desktop/比賽/HouseGoodGood/UserData/治安/臺北市街頭隨機強盜案件點位資訊.csv', 'r', encoding="utf-8") as self.infile:
+        with open('UserData/治安/臺北市街頭隨機強盜案件點位資訊.csv', 'r', encoding="utf-8") as self.infile:
             #data = self.infile
             point1 = 0
             point2 = 0

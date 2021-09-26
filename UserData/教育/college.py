@@ -1,7 +1,7 @@
 class College:
     def __init__(self) -> None:
         self.address = []
-        with open('C:/Users/88690/Desktop/比賽/HouseGoodGood/UserData/教育/110年社區大學聯絡資訊1100412.txt', 'r', encoding='utf-8') as self.infile:
+        with open('UserData/教育/110年社區大學聯絡資訊1100412.txt', 'r', encoding='utf-8') as self.infile:
             #data = self.infile
             point1 = 0
             point2 = 0

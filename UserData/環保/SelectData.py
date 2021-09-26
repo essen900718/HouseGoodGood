@@ -3,7 +3,7 @@ class SelectData:
     def __init__(self) -> None:
         self.address = []
 
-        with open('C:/Users/88690/Desktop/比賽/HouseGoodGood/UserData/環保/110年臺北市電動機車充電地點(406).csv', 'r', encoding="utf-8") as self.infile:
+        with open('UserData/環保/110年臺北市電動機車充電地點(406).csv', 'r', encoding="utf-8") as self.infile:
             #data = self.infile
             line = self.infile.readline()
             for line in self.infile:
