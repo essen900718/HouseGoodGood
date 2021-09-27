@@ -5,7 +5,7 @@ from UserData.AddressData import Taipei
 from src.spider import spider
 from src.dataType import houseInfoType
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 spi = spider()
 lastUpdateTime = ''
 l = []
