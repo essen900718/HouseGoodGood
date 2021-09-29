@@ -30,6 +30,10 @@ def initData():
 def hello_world():
     return render_template("1.html" , infoList = l, size = len(l), hospital = Hospital, chargestation = ChargeStation, college = College)
 
+@app.route('/main')
+def main():
+    return render_template("main.html" , infoList = l, size = len(l), hospital = Hospital, chargestation = ChargeStation, college = College)
+
 @app.route('/database')
 def test():
     return render_template('database.html', infoList = l, lastUpdateTime = lastUpdateTime, size = len(l))
