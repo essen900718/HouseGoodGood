@@ -27,12 +27,16 @@ def initData():
         print(e)
 
 @app.route('/')
-def hello_world():
-    return render_template("1.html" , infoList = l, size = len(l), hospital = Hospital, chargestation = ChargeStation, college = College)
+def home():
+    return render_template("home.html" , infoList = l, size = len(l), hospital = Hospital, chargestation = ChargeStation, college = College)
 
 @app.route('/main')
 def main():
     return render_template("main.html" , infoList = l, size = len(l), hospital = Hospital, chargestation = ChargeStation, college = College)
+
+@app.route('/about')
+def about():
+    return render_template("about.html" , infoList = l, size = len(l), hospital = Hospital, chargestation = ChargeStation, college = College)
 
 @app.route('/database')
 def test():

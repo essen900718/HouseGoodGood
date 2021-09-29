@@ -10,18 +10,30 @@
   <noscript><link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}"/></noscript>
 {% endblock %}
 <!-- {% block body %} -->
-<body class="no-sidebar is-preload">
-  <div id="page-wrapper">
-    <!-- Header -->
+<body class="homepage is-preload">
+<div id="page-wrapper">
+  <!-- Header -->
     <div id="header">
       <!-- Inner -->
         <div class="inner">
           <header>
-            <h1><a href="index.html" id="logo">Helios</a></h1>
+            <img src="{{url_for('static', filename='images/5.png')}}" width="300"/>
+            <hr />
+            <p>Welcome to HouseGoodGood !</p>
           </header>
+          <footer>
+            
+          </footer>
+          <div id="wrap">
+            <div class="bt1">
+              <a href="#banner" class="button circled scrolly">Turtorial</a>
+            </div>
+            <p></p>
+            <div class="bt2">
+              <a href="{{ url_for('main') }}" class="button circled scrolly">Start</a>
+            </div>
+          </div>
         </div>
-
-      <!-- Nav -->
         <nav id="nav">
           <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -30,55 +42,38 @@
           </ul>
         </nav>
     </div>
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <div class = "selection-bar">
-      <select id="select">
-        <option value="0">請選擇區域</option>
-        <option value="1">中正區</option>
-        <option value="2">大同區</option>
-        <option value="3">中山區</option>
-        <option value="4">松山區</option>
-        <option value="5">大安區</option>
-        <option value="6">萬華區</option>
-        <option value="7">信義區</option>
-        <option value="8">士林區</option>
-        <option value="9">北投區</option>
-        <option value="10">內湖區</option>
-        <option value="11">南港區</option>
-        <option value="12">文山區</option>
-      </select>
-      <input type="checkbox" id="c1" value="1" name="cb1">電動車
-      <input type="checkbox" id="c2" value="2" name="cb1">醫院  
-      <input type="checkbox" id="c3" value="3" name="cb1">日照中心   
-      <button id="btn">Submit</button>
+  <!-- Banner -->
+    <section id="banner">
+      <header>
+        <h2>Hi. You're looking at <strong>HouseGoodGood</strong>.</h2>
+      </header>
+    </section>
+  <!-- Main -->
+    <div class="wrapper style2">
+      <article id="main" class="container special">
+        <!-- <a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a> -->
+        <header>
+          <h2><a href="#">Sed massa imperdiet magnis</a></h2>
+          <p>
+            Sociis aenean eu aenean mollis mollis facilisis primis ornare penatibus aenean. Cursus ac enim
+            pulvinar curabitur morbi convallis. Lectus malesuada sed fermentum dolore amet.
+          </p>
+        </header>
+        <p>
+          Commodo id natoque malesuada sollicitudin elit suscipit. Curae suspendisse mauris posuere accumsan massa
+          posuere lacus convallis tellus interdum. Amet nullam fringilla nibh nulla convallis ut venenatis purus
+          sit arcu sociis. Nunc fermentum adipiscing tempor cursus nascetur adipiscing adipiscing. Primis aliquam
+          mus lacinia lobortis phasellus suscipit. Fermentum lobortis non tristique ante proin sociis accumsan
+          lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum
+          consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue
+          interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia
+          natoque aenean scelerisque.
+        </p>
+        <footer>
+          <a href="{{ url_for('main') }}" class="button">Get Start</a>
+        </footer>
+      </article>
     </div>
-
-
-    <div id="map"></div>
-    <div class="title">點我收合</div>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">名稱</th>
-          <th scope="col">地址</th>
-          <th scope="col">房齡</th>
-          <th scope="col">類型</th>
-          <th scope="col">價格</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        {% for info in infoList %}
-          <tr>
-            <td class="name">{{ info.name }}</td>
-            <td class="addr">{{ info.addr }}</td>
-            <td class="year">{{ info.year }}</td>
-            <td class="houseType">{{ info.houseType }}</td>
-            <td class="price">{{ info.price }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
 
     <!-- Footer -->
     <div id="footer">
