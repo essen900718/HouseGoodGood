@@ -9,8 +9,8 @@
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/fold.css') }}"/>
   <noscript><link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}"/></noscript>
 {% endblock %}
-{% block body %}
-
+<!-- {% block body %} -->
+<body class="homepage is-preload">
 <div id="page-wrapper">
   <!-- Header -->
     <div id="header">
@@ -133,4 +133,5 @@
         };
     });
   </script>
-{% endblock %}
+</body>
+<!-- {% endblock %} -->
