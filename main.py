@@ -32,7 +32,7 @@ def initData():
 
 @app.route('/')
 def home():
-    return render_template("1.html" , infoList = l, size = len(l), hospital = Hospital, chargestation = ChargeStation, college = College)
+    return render_template("home.html" , infoList = l, size = len(l), hospital = Hospital, chargestation = ChargeStation, college = College)
 
 @app.route('/main')
 def main():

@@ -13,6 +13,14 @@
 {% block body %}
 
 <body class="no-sidebar is-preload">
+  <div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+      </div>
+    <script>
+      $(window).on("load",function(){
+        $(".loader-wrapper").fadeOut("slow");
+      });
+    </script>
   <div id="page-wrapper">
     <!-- Header -->
     <div id="header">
@@ -32,6 +40,7 @@
         </ul>
       </nav>
     </div>
+    
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <div class="selection-bar">
       <select id="select">
@@ -52,12 +61,11 @@
       <input type="checkbox" id="c1" value="1" name="cb1">電動車
       <input type="checkbox" id="c2" value="2" name="cb1">醫院
       <input type="checkbox" id="c3" value="3" name="cb1">日照中心
-      <button id="btn">Submit</button>
+      <button id="btn">Delete Markers</button>
     </div>
-
-
+    
+    
     <div id="map"></div>
-    <div class="title">點我收合</div>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -68,7 +76,7 @@
           <th scope="col">價格</th>
         </tr>
       </thead>
-
+    
       <tbody>
         {% for info in infoList %}
         <tr>
@@ -80,6 +88,18 @@
         </tr>
         {% endfor %}
       </tbody>
+    
+      {% for hos in hospital %}
+      <tr>
+        <td class="Hospital">{{ hos }}</td>
+      </tr>
+      {% endfor %}
+    
+      <div id="EF" d="{{chargestation}}">
+      </div>
+    
+      <!-- <div id="Hospital" d="{{hospital}}">
+      </div> -->
     </table>
 
     <!-- Footer -->
