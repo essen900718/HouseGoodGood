@@ -3,3 +3,4 @@ gunicorn
 requests
 BeautifulSoup4
 lxml
+pandas==1.1.3

@@ -1,7 +1,7 @@
 class CareCenterData:
     def __init__(self) -> None:
         self.address = []
-        with open('UserData\H\日間照顧中心.csv', 'r', encoding="utf-8") as self.infile:
+        with open('UserData/H/日間照顧中心.csv', 'r', encoding="utf-8") as self.infile:
             #data = self.infile
             point1 = 0
             point2 = 0
