@@ -1,0 +1,234 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Finding House ?</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/fold.css') }}" />
+<noscript>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" />
+</noscript>
+{% endblock %}
+<!-- {% block body %} -->
+
+<body class="no-sidebar is-preload">
+  <div id="page-wrapper">
+    <!-- Header -->
+    <div id="header">
+      <!-- Inner -->
+      <div class="inner">
+        <header>
+          <h1><a href="index.html" id="logo">Helios</a></h1>
+        </header>
+      </div>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+          <li><a href="https://www.sinyi.com.tw/">Source</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <div class="selection-bar">
+      <select id="select">
+        <option value="0">請選擇區域</option>
+        <option value="1">中正區</option>
+        <option value="2">大同區</option>
+        <option value="3">中山區</option>
+        <option value="4">松山區</option>
+        <option value="5">大安區</option>
+        <option value="6">萬華區</option>
+        <option value="7">信義區</option>
+        <option value="8">士林區</option>
+        <option value="9">北投區</option>
+        <option value="10">內湖區</option>
+        <option value="11">南港區</option>
+        <option value="12">文山區</option>
+      </select>
+      <input type="checkbox" id="c1" value="1" name="cb1">電動車
+      <input type="checkbox" id="c2" value="2" name="cb1">醫院
+      <input type="checkbox" id="c3" value="3" name="cb1">日照中心
+      <button id="btn">Submit</button>
+    </div>
+
+
+    <div id="map"></div>
+    <div class="title">點我收合</div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">名稱</th>
+          <th scope="col">地址</th>
+          <th scope="col">房齡</th>
+          <th scope="col">類型</th>
+          <th scope="col">價格</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for info in infoList %}
+        <tr>
+          <td class="name">{{ info.name }}</td>
+          <td class="addr">{{ info.addr }}</td>
+          <td class="year">{{ info.year }}</td>
+          <td class="houseType">{{ info.houseType }}</td>
+          <td class="price">{{ info.price }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Footer -->
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <section class="contact">
+              <header>
+                <h3>Contact us? </h3>
+              </header>
+              <p>If there has any question, please contact us right away. Thanks!</p>
+              <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
+                <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+                <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
+              </ul>
+            </section>
+
+            <!-- Copyright -->
+            <div class="copyright">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="92" height="20"
+                role="img" aria-label="Frame: HTML5">
+                <title>Frame: HTML5</title>
+                <linearGradient id="s" x2="0" y2="100%">
+                  <stop offset="0" stop-color="#bbb" stop-opacity=".1" />
+                  <stop offset="1" stop-opacity=".1" />
+                </linearGradient>
+                <clipPath id="r">
+                  <rect width="92" height="20" rx="3" fill="#fff" />
+                </clipPath>
+                <g clip-path="url(#r)">
+                  <rect width="45" height="20" fill="#555" />
+                  <rect x="45" width="47" height="20" fill="#e05d44" />
+                  <rect width="92" height="20" fill="url(#s)" />
+                </g>
+                <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif"
+                  text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="235" y="150"
+                    fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="350">Frame</text><text x="235"
+                    y="140" transform="scale(.1)" fill="#fff" textLength="350">Frame</text><text aria-hidden="true"
+                    x="675" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)"
+                    textLength="370">HTML5</text><text x="675" y="140" transform="scale(.1)" fill="#fff"
+                    textLength="370">HTML5</text></g>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="20"
+                role="img" aria-label="Theme: Helios">
+                <title>Theme: Helios</title>
+                <linearGradient id="s" x2="0" y2="100%">
+                  <stop offset="0" stop-color="#bbb" stop-opacity=".1" />
+                  <stop offset="1" stop-opacity=".1" />
+                </linearGradient>
+                <clipPath id="r">
+                  <rect width="90" height="20" rx="3" fill="#fff" />
+                </clipPath>
+                <g clip-path="url(#r)">
+                  <rect width="47" height="20" fill="#555" />
+                  <rect x="47" width="43" height="20" fill="#fe7d37" />
+                  <rect width="90" height="20" fill="url(#s)" />
+                </g>
+                <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif"
+                  text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="245" y="150"
+                    fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="370">Theme</text><text x="245"
+                    y="140" transform="scale(.1)" fill="#fff" textLength="370">Theme</text><text aria-hidden="true"
+                    x="675" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)"
+                    textLength="330">Helios</text><text x="675" y="140" transform="scale(.1)" fill="#fff"
+                    textLength="330">Helios</text></g>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="98" height="20"
+                role="img" aria-label="Hosted: Heroku">
+                <title>Hosted: Heroku</title>
+                <linearGradient id="s" x2="0" y2="100%">
+                  <stop offset="0" stop-color="#bbb" stop-opacity=".1" />
+                  <stop offset="1" stop-opacity=".1" />
+                </linearGradient>
+                <clipPath id="r">
+                  <rect width="98" height="20" rx="3" fill="#fff" />
+                </clipPath>
+                <g clip-path="url(#r)">
+                  <rect width="49" height="20" fill="#555" />
+                  <rect x="49" width="49" height="20" fill="#dfb317" />
+                  <rect width="98" height="20" fill="url(#s)" />
+                </g>
+                <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif"
+                  text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="255" y="150"
+                    fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="390">Hosted</text><text x="255"
+                    y="140" transform="scale(.1)" fill="#fff" textLength="390">Hosted</text><text aria-hidden="true"
+                    x="725" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)"
+                    textLength="390">Heroku</text><text x="725" y="140" transform="scale(.1)" fill="#fff"
+                    textLength="390">Heroku</text></g>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="20"
+                role="img" aria-label="Source: Github">
+                <title>Source: Github</title>
+                <linearGradient id="s" x2="0" y2="100%">
+                  <stop offset="0" stop-color="#bbb" stop-opacity=".1" />
+                  <stop offset="1" stop-opacity=".1" />
+                </linearGradient>
+                <clipPath id="r">
+                  <rect width="96" height="20" rx="3" fill="#fff" />
+                </clipPath>
+                <g clip-path="url(#r)">
+                  <rect width="49" height="20" fill="#555" />
+                  <rect x="49" width="47" height="20" fill="#97ca00" />
+                  <rect width="96" height="20" fill="url(#s)" />
+                </g>
+                <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif"
+                  text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="255" y="150"
+                    fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="390">Source</text><text x="255"
+                    y="140" transform="scale(.1)" fill="#fff" textLength="390">Source</text><text aria-hidden="true"
+                    x="715" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)"
+                    textLength="370">Github</text><text x="715" y="140" transform="scale(.1)" fill="#fff"
+                    textLength="370">Github</text></g>
+              </svg>
+              <ul class="menu">
+                <li>&copy; HouseGoodGood. All rights reserved.</li>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/jquery.dropotron.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/jquery.scrolly.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/browser.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/util.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAui41PhiDPXFDiZcWUbp3h6mMCJ5Bjx6Q&callback=initMap&libraries=&v=weekly"
+    async>
+    </script>
+  <script>
+    $(".title").click(function () {
+      var x = $(this).siblings("table")
+      if (x.css("display") == "none") {
+        x.slideDown();
+      } else {
+        x.slideUp();
+      };
+    });
+  </script>
+</body>
+<!-- {% endblock %} -->
