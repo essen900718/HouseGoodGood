@@ -2055,7 +2055,7 @@ input, select, textarea {
 	.button {
 		position: relative;
 		display: inline-block;
-		background: #a281b4;//df7366
+		background: #a281b4;
 		color: #fff;
 		text-align: center;
 		border-radius: 0.5em;
@@ -3143,7 +3143,8 @@ input, select, textarea {
 		position: absolute;
 		top: 0;
 		left: 0;
-		background-color: #242f3f;
+		/* background-color: #242f3f; */
+		background-image: url("/static/images/bg.gif");
 		display:flex;
 		justify-content: center;
 		align-items: center;
