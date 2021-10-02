@@ -3144,8 +3144,10 @@ input, select, textarea {
 		top: 0;
 		left: 0;
 		/* background-color: #242f3f; */
-		background-image: url("/static/images/bg.gif");
-		background-size: cover;
+		background-image: url("/static/images/22.gif");
+		margin-top: 17%;
+		margin-left: 5%;
+		background-size: contain;
 		display:flex;
 		justify-content: center;
 		align-items: center;
