@@ -1,4 +1,5 @@
 import time
+from typing import Sized
 from flask import Flask
 from flask import render_template
 from UserData.AddressData import Taipei
@@ -9,8 +10,11 @@ app = Flask(__name__, static_url_path='/static')
 spi = spider()
 lastUpdateTime = ''
 l = []
+Hospital = []
 ##醫院資料
-Hospital = Taipei().hospital()
+temp = Taipei().hospital()
+for i in range(0,len(temp)):
+    Hospital.append(temp[i].address)
 ##充電站
 ChargeStation = Taipei().EF()
 ##社區大學

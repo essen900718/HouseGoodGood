@@ -4,9 +4,14 @@ let adr = document.getElementsByClassName('addr')
 let time = document.getElementsByClassName('year')
 let hT = document.getElementsByClassName('houseType')
 let p = document.getElementsByClassName('price')
+
+let hos = document.getElementsByClassName('Hospital')
+let EFadr = document.getElementById('EF').getAttribute('d')
+
 let pos ={lat: 25.042053466882443 , lng: 121.520583083073}
 let poslist =[]
- var data,la,ln,laT,lnT
+let hoslist =[]
+var data,la,ln,laT,lnT
 
  //區域列表
  const blocklist=[
@@ -28,20 +33,19 @@ for( i = 0 ; i < adr.length ;i++){
     var xhr = new XMLHttpRequest()
     xhr.open('GET',dataUrl, true)
     xhr.send()
-    dataparse()
+    dataparse(poslist)
 }
 
-// for( i = 0 ; i < 20 ;i++){
-//   var loc
-//   var dataUrl= "https://maps.googleapis.com/maps/api/geocode/json?address="+{{ hospital[i].address }}+"&key=AIzaSyAui41PhiDPXFDiZcWUbp3h6mMCJ5Bjx6Q"
-//   var xhr = new XMLHttpRequest()
-//   xhr.open('GET',dataUrl, true)
-//   xhr.send()
-//   dataparse()
-// }
-
+for( i = 0 ; i < hos.length ;i++){
+  var loc
+  var dataUrl= "https://maps.googleapis.com/maps/api/geocode/json?address="+hos[i].textContent+"&key=AIzaSyAui41PhiDPXFDiZcWUbp3h6mMCJ5Bjx6Q"
+  var xhr = new XMLHttpRequest()
+  xhr.open('GET',dataUrl, true)
+  xhr.send()
+  dataparse(hoslist)
+}
 //Xhr state function
-function dataparse() {
+function dataparse(list) {
       //status(HTTP狀態碼):200 正常完成
       xhr.onreadystatechange = function(){
 
@@ -52,7 +56,7 @@ function dataparse() {
           lnT = data["results"][0]["geometry"]["location"]["lng"]
           la = parseFloat(laT);
           ln = parseFloat(lnT);
-          poslist.push({
+          list.push({
               lat: la,
               lng: ln
           });
@@ -64,11 +68,14 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: pos,
     zoom: 15,
+    mapTypeControl:false,
+    fullscreenControl:true,
+    rotateControl:true,
+    scaleControl:false,
+    streetViewControl:false,
+    zoomControl:true,
   });
 
-  for (var i = 0; i < poslist.length; i++) {
-    setMarker(i);
-  }
 };
 
 //當select不同區域切換center
@@ -77,20 +84,12 @@ select.addEventListener('change', function () {
     initMap()
 });
 
-document.getElementById('btn').onclick = function() {
-  var markedCheckbox = document.getElementsByName('cb1');
-  for (var checkbox of markedCheckbox) {
-    if (checkbox.checked)
-      document.body.append(checkbox.value + ' ');
-  }
-}
-
 //設置所有房子的marker
 function setMarker(e){
    let marker = new google.maps.Marker({
       position: poslist[e],	//marker的放置位置
       map: map, //這邊的map指的是第四行的map變數
-      zIndex:1
+      zIndex:3
     })   
 
     var content = 'title : ' + hN[e].textContent + '</br>addr : ' + adr[e].textContent + '</br>time : ' + time[e].textContent 
@@ -99,7 +98,21 @@ function setMarker(e){
     attachInfo(marker,content);
 }
 
-//設置所有房子的windowinfo
+//設置所有醫院的marker
+function setHosMarker(e){
+  let marker = new google.maps.Marker({
+     position: hoslist[e],	//marker的放置位置
+     map: map, //這邊的map指的是第四行的map變數
+     label: 'H',
+     zIndex:3
+   })   
+
+   var content = 'title : ' + hos[e].textContent
+
+   attachInfo(marker,content);  
+}
+
+//設置windowinfo
 function attachInfo(marker,tent){
   var infowindow = new google.maps.InfoWindow({
     content:tent,
@@ -111,6 +124,10 @@ function attachInfo(marker,tent){
   })
 }
 
+document.getElementById("btn").addEventListener("click", Click);
 
-
+function Click() {
+    for(var i = 0 ; i < hos.length ; i++)
+      setHosMarker(i)
+}
 

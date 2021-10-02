@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>HouseGoodGood</title>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+{% endblock %}
+{% block body %}
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+<div class="selection-bar">
+  <select id="select">
+    <option value="0">請選擇區域</option>
+    <option value="1">中正區</option>
+    <option value="2">大同區</option>
+    <option value="3">中山區</option>
+    <option value="4">松山區</option>
+    <option value="5">大安區</option>
+    <option value="6">萬華區</option>
+    <option value="7">信義區</option>
+    <option value="8">士林區</option>
+    <option value="9">北投區</option>
+    <option value="10">內湖區</option>
+    <option value="11">南港區</option>
+    <option value="12">文山區</option>
+  </select>
+  <input type="checkbox" id="c1" value="1" name="cb1">電動車
+  <input type="checkbox" id="c2" value="2" name="cb1">醫院
+  <input type="checkbox" id="c3" value="3" name="cb1">日照中心
+  <button id="btn">Submit</button>
+</div>
+
+
+<div id="map"></div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">名稱</th>
+      <th scope="col">地址</th>
+      <th scope="col">房齡</th>
+      <th scope="col">類型</th>
+      <th scope="col">價格</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for info in infoList %}
+    <tr>
+      <td class="name">{{ info.name }}</td>
+      <td class="addr">{{ info.addr }}</td>
+      <td class="year">{{ info.year }}</td>
+      <td class="houseType">{{ info.houseType }}</td>
+      <td class="price">{{ info.price }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+  {% for hos in hospital %}
+  <tr>
+    <td class="Hospital">{{ hos }}</td>
+  </tr>
+  {% endfor %}
+
+  <div id="EF" d="{{chargestation}}">
+  </div>
+
+  <!-- <div id="Hospital" d="{{hospital}}">
+  </div> -->
+</table>
+<script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAui41PhiDPXFDiZcWUbp3h6mMCJ5Bjx6Q&callback=initMap&libraries=&v=weekly"
+  async>
+  </script>
+{% endblock %}

@@ -21,6 +21,5 @@ class Hospital:
         return self.Data
 
 
-# T = Hospital()
-# temp = T.GetData()
-# print(temp[0].address)
+# T = Hospital().GetData()
+# print(T[0].address)
