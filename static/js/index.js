@@ -8,6 +8,9 @@ let p = document.getElementsByClassName('price')
 let hos = document.getElementsByClassName('Hospital')
 let EFadr = document.getElementById('EF').getAttribute('d')
 
+var House = []
+var Hospital = []
+
 let pos ={lat: 25.042053466882443 , lng: 121.520583083073}
 let poslist =[]
 let hoslist =[]
@@ -64,6 +67,57 @@ function dataparse(list) {
       }
 }
 
+// Add a Home control that returns the user to London
+function HomeControl(controlDiv, map) {
+  controlDiv.style.padding = '5px';
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = 'yellow';
+  controlUI.style.border='1px solid';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Set map to London';
+  controlDiv.appendChild(controlUI);
+  var controlText = document.createElement('div');
+  controlText.style.fontFamily='Arial,sans-serif';
+  controlText.style.fontSize='12px';
+  controlText.style.paddingLeft = '4px';
+  controlText.style.paddingRight = '4px';
+  controlText.innerHTML = '<b>House<b>'
+  controlUI.appendChild(controlText);
+
+  // Setup click-event listener: simply set the map to London
+  google.maps.event.addDomListener(controlUI, 'click', function() {
+    for(var i = 0 ; i < poslist.length ; i++) setMarker(i);
+  });
+}
+
+function HospitalControl(controlDiv, map) {
+  controlDiv.style.padding = '5px';
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = 'yellow';
+  controlUI.style.border='1px solid';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Set map to London';
+  controlDiv.appendChild(controlUI);
+  var controlText = document.createElement('div');
+  controlText.style.fontFamily='Arial,sans-serif';
+  controlText.style.fontSize='12px';
+  controlText.style.paddingLeft = '4px';
+  controlText.style.paddingRight = '4px';
+  controlText.innerHTML = '<b>Hospital<b>'
+  controlUI.appendChild(controlText);
+
+  // Setup click-event listener: simply set the map to London
+  google.maps.event.addDomListener(controlUI, 'click', function() {
+    for(var i = 0 ; i < hoslist.length ; i++) setHosMarker(i);
+  });
+}
+
+
+
+
+
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: pos,
@@ -75,7 +129,15 @@ function initMap() {
     streetViewControl:false,
     zoomControl:true,
   });
+  var HomeControlDiv = document.createElement('div');
+  var HouseControl = new HomeControl(HomeControlDiv, map);
 
+  var HospitalControlDiv = document.createElement('div');
+  var HospControl = new HospitalControl(HospitalControlDiv,map)
+
+  //  homeControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(HomeControlDiv);
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(HospitalControlDiv);
 };
 
 //當select不同區域切換center
@@ -96,6 +158,7 @@ function setMarker(e){
     + '</br>houseType : ' + hT[e].textContent + '</br>price : ' + p[e].textContent ;
 
     attachInfo(marker,content);
+    House.push(marker)
 }
 
 //設置所有醫院的marker
@@ -110,6 +173,7 @@ function setHosMarker(e){
    var content = 'title : ' + hos[e].textContent
 
    attachInfo(marker,content);  
+   Hospital.push(marker)
 }
 
 //設置windowinfo
@@ -124,10 +188,17 @@ function attachInfo(marker,tent){
   })
 }
 
-document.getElementById("btn").addEventListener("click", Click);
+//刪除markers
+var btn = document.getElementById("btn")
+btn.onclick = function (){
+    for(var i = 0 ; i < House.length ; i++){
+      House[i].setMap(null);
+    }
+    House = [];
 
-function Click() {
-    for(var i = 0 ; i < hos.length ; i++)
-      setHosMarker(i)
+    for(var i = 0 ; i < Hospital.length ; i++){
+      Hospital[i].setMap(null);
+    }
+    Hospital = [];
 }
 
