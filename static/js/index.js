@@ -23,11 +23,23 @@ let collea = document.getElementsByClassName('collegeAdr')
 let collla = document.getElementsByClassName('collegeLat')
 let collln = document.getElementsByClassName('collegeLng')
 
+let chargen = document.getElementsByClassName('chargeName')
+let chargea = document.getElementsByClassName('chargeAdr')
+let chargela = document.getElementsByClassName('chargeLat')
+let chargeln = document.getElementsByClassName('chargeLng')
+
+let caren = document.getElementsByClassName('careName')
+let carea = document.getElementsByClassName('careAdr')
+let carela = document.getElementsByClassName('careLat')
+let careln = document.getElementsByClassName('careLng')
+
 var House = []
 var Market = []
 var Markers = []
 var Hospital = []
 var College = []
+var Charge = []
+var Care = []
 
 let pos ={lat: 25.042053466882443 , lng: 121.520583083073}
 
@@ -46,17 +58,18 @@ let pos ={lat: 25.042053466882443 , lng: 121.520583083073}
 
 //Delete Marker
 function DeleteControl(controlDiv, map) {
-  controlDiv.style.padding = '5px';
+  controlDiv.style.padding = '10px';
   var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = 'yellow';
-  controlUI.style.border='1px solid';
+  controlUI.style.backgroundColor = '#a281b4';
+  //controlUI.style.border='1px solid';
   controlUI.style.cursor = 'pointer';
   controlUI.style.textAlign = 'center';
   controlUI.title = 'Set map to London';
   controlDiv.appendChild(controlUI);
   var controlText = document.createElement('div');
-  controlText.style.fontFamily='Arial,sans-serif';
+  controlText.style.fontFamily='Open Sans Condensed';
   controlText.style.fontSize='12px';
+  controlText.style.color = "rgb(255,255,255)";
   controlText.style.paddingLeft = '4px';
   controlText.style.paddingRight = '4px';
   controlText.innerHTML = '<b>Delete<b>'
@@ -74,17 +87,18 @@ function DeleteControl(controlDiv, map) {
 }
 
 function HomeControl(controlDiv,map) {
-  controlDiv.style.padding = '5px';
+  controlDiv.style.padding = '10px';
   var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = 'yellow';
-  controlUI.style.border='1px solid';
+  controlUI.style.backgroundColor = '#a281b4';
+  //controlUI.style.border='1px solid';
   controlUI.style.cursor = 'pointer';
   controlUI.style.textAlign = 'center';
   controlUI.title = 'Set map to London';
   controlDiv.appendChild(controlUI);
   var controlText = document.createElement('div');
-  controlText.style.fontFamily='Arial,sans-serif';
+  controlText.style.fontFamily='Open Sans Condensed';
   controlText.style.fontSize='12px';
+  controlText.style.color = "rgb(255,255,255)";
   controlText.style.paddingLeft = '4px';
   controlText.style.paddingRight = '4px';
   controlText.innerHTML = '<b>House<b>'
@@ -105,17 +119,18 @@ function HomeControl(controlDiv,map) {
 }
 
 function MarketControl(controlDiv, map) {
-  controlDiv.style.padding = '5px';
+  controlDiv.style.padding = '10px';
   var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = 'yellow';
-  controlUI.style.border='1px solid';
+  controlUI.style.backgroundColor = '#a281b4';
+  //controlUI.style.border='1px solid';
   controlUI.style.cursor = 'pointer';
   controlUI.style.textAlign = 'center';
   controlUI.title = 'Set map to London';
   controlDiv.appendChild(controlUI);
   var controlText = document.createElement('div');
-  controlText.style.fontFamily='Arial,sans-serif';
+  controlText.style.fontFamily='Open Sans Condensed';
   controlText.style.fontSize='12px';
+  controlText.style.color = "rgb(255,255,255)";
   controlText.style.paddingLeft = '4px';
   controlText.style.paddingRight = '4px';
   controlText.innerHTML = '<b>Market<b>'
@@ -151,17 +166,18 @@ function MarketControl(controlDiv, map) {
 }
 
 function HospitalControl(controlDiv, map) {
-  controlDiv.style.padding = '5px';
+  controlDiv.style.padding = '10px';
   var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = 'yellow';
-  controlUI.style.border='1px solid';
+  controlUI.style.backgroundColor = '#a281b4';
+  //controlUI.style.border='1px solid';
   controlUI.style.cursor = 'pointer';
   controlUI.style.textAlign = 'center';
   controlUI.title = 'Set map to London';
   controlDiv.appendChild(controlUI);
   var controlText = document.createElement('div');
-  controlText.style.fontFamily='Arial,sans-serif';
+  controlText.style.fontFamily='Open Sans Condensed';
   controlText.style.fontSize='12px';
+  controlText.style.color = "rgb(255,255,255)";
   controlText.style.paddingLeft = '4px';
   controlText.style.paddingRight = '4px';
   controlText.innerHTML = '<b>Hospital<b>'
@@ -197,16 +213,18 @@ function HospitalControl(controlDiv, map) {
 }
 
 function CollegeControl(controlDiv, map) {
-  controlDiv.style.padding = '5px';
+  controlDiv.style.padding = '10px';
   var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = 'yellow';
-  controlUI.style.border='1px solid';
+  controlUI.style.backgroundColor = '#a281b4';
+  //controlUI.style.border='1px solid';
   controlUI.style.cursor = 'pointer';
   controlUI.style.textAlign = 'center';
   controlUI.title = 'Set map to London';
+  // controlUI.style.height = '20px';
   controlDiv.appendChild(controlUI);
   var controlText = document.createElement('div');
-  controlText.style.fontFamily='Arial,sans-serif';
+  controlText.style.color = "rgb(25,25,25)";
+  controlText.style.fontFamily='Open Sans Condensed';
   controlText.style.fontSize='12px';
   controlText.style.paddingLeft = '4px';
   controlText.style.paddingRight = '4px';
@@ -215,7 +233,7 @@ function CollegeControl(controlDiv, map) {
 
   // Setup click-event listener: simply set the map to London
   google.maps.event.addDomListener(controlUI, 'click', function() {
-    for(var i = 0 ; i < hospla.length ; i++) 
+    for(var i = 0 ; i < collla.length ; i++) 
     {
       var content = 'title : ' + collen[i].textContent
       icon = 'http://maps.google.com/mapfiles/kml/pal3/icon31.png'
@@ -241,6 +259,101 @@ function CollegeControl(controlDiv, map) {
   });
 }
 
+function ChargeControl(controlDiv, map) {
+  controlDiv.style.padding = '10px';
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#a281b4';
+  //controlUI.style.border='1px solid';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Set map to London';
+  // controlUI.style.height = '20px';
+  controlDiv.appendChild(controlUI);
+  var controlText = document.createElement('div');
+  controlText.style.color = "rgb(25,25,25)";
+  controlText.style.fontFamily='Open Sans Condensed';
+  controlText.style.fontSize='12px';
+  controlText.style.paddingLeft = '4px';
+  controlText.style.paddingRight = '4px';
+  controlText.innerHTML = '<b>Charge<b>'
+  controlUI.appendChild(controlText);
+
+  // Setup click-event listener: simply set the map to London
+  google.maps.event.addDomListener(controlUI, 'click', function() {
+    for(var i = 0 ; i < chargela.length ; i++) 
+    {
+      var content = 'title : ' + chargen[i].textContent
+      icon = 'http://maps.google.com/mapfiles/kml/pal2/icon29.png'
+      setMarker(chargela[i].textContent,chargeln[i].textContent,content,Charge,icon);
+    }
+    Markers.push(Charge)
+
+    for(var i = 0 ; i < House.length ; i++) 
+    {
+      check = false
+      tempLa = House[i].getPosition().lat()
+      tempLn = House[i].getPosition().lng()
+      for(var e = 0 ; e < Charge.length ; e++)
+      {
+        houseLa = Charge[e].getPosition().lat()
+        houseLn = Charge[e].getPosition().lng()
+        distance = getDistance(houseLn,houseLa,tempLn,tempLa)
+        console.log(distance);
+        if(distance < 1) check = true
+      }
+
+      if(check == false) House[i].setMap(null)
+    }
+  });
+}
+
+function CareControl(controlDiv, map) {
+  controlDiv.style.padding = '10px';
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#a281b4';
+  //controlUI.style.border='1px solid';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Set map to London';
+  // controlUI.style.height = '20px';
+  controlDiv.appendChild(controlUI);
+  var controlText = document.createElement('div');
+  controlText.style.color = "rgb(25,25,25)";
+  controlText.style.fontFamily='Open Sans Condensed';
+  controlText.style.fontSize='12px';
+  controlText.style.paddingLeft = '4px';
+  controlText.style.paddingRight = '4px';
+  controlText.innerHTML = '<b>Care<b>'
+  controlUI.appendChild(controlText);
+
+  // Setup click-event listener: simply set the map to London
+  google.maps.event.addDomListener(controlUI, 'click', function() {
+    for(var i = 0 ; i < carela.length ; i++) 
+    {
+      var content = 'title : ' + chargen[i].textContent
+      icon = 'http://maps.google.com/mapfiles/kml/pal4/icon55.png'
+      setMarker(carela[i].textContent,careln[i].textContent,content,Care,icon);
+    }
+    Markers.push(Care)
+
+    for(var i = 0 ; i < House.length ; i++) 
+    {
+      check = false
+      tempLa = House[i].getPosition().lat()
+      tempLn = House[i].getPosition().lng()
+      for(var e = 0 ; e < Care.length ; e++)
+      {
+        houseLa = Care[e].getPosition().lat()
+        houseLn = Care[e].getPosition().lng()
+        distance = getDistance(houseLn,houseLa,tempLn,tempLa)
+        if(distance < 1) check = true
+      }
+
+      if(check == false) House[i].setMap(null)
+    }
+  });
+}
+
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: pos,
@@ -251,7 +364,107 @@ function initMap() {
     scaleControl:false,
     streetViewControl:false,
     zoomControl:true,
-    mapTypeId: "terrain",
+    //mapTypeId: "terrain",
+    styles:
+    [
+        {
+            "featureType": "road",
+            "stylers": [
+                {
+                    "hue": "#5e00ff"
+                },
+                {
+                    "saturation": -79
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "stylers": [
+                {
+                    "saturation": -78
+                },
+                {
+                    "hue": "#6600ff"
+                },
+                {
+                    "lightness": -47
+                },
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "stylers": [
+                {
+                    "lightness": 22
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "stylers": [
+                {
+                    "hue": "#6600ff"
+                },
+                {
+                    "saturation": -11
+                }
+            ]
+        },
+        {},
+        {},
+        {
+            "featureType": "water",
+            "stylers": [
+                {
+                    "saturation": -65
+                },
+                {
+                    "hue": "#1900ff"
+                },
+                {
+                    "lightness": 8
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "stylers": [
+                {
+                    "weight": 1.3
+                },
+                {
+                    "lightness": 30
+                }
+            ]
+        },
+        {
+            "featureType": "transit",
+            "stylers": [
+                {
+                    "visibility": "simplified"
+                },
+                {
+                    "hue": "#5e00ff"
+                },
+                {
+                    "saturation": -16
+                }
+            ]
+        },
+        {
+            "featureType": "transit.line",
+            "stylers": [
+                {
+                    "saturation": -72
+                }
+            ]
+        },
+        {}
+      ]
   });
 
   for(var e = 0 ; e < la.length ; e++) 
@@ -279,13 +492,21 @@ function initMap() {
   var CollegeControlDiv = document.createElement('div');
   var coll = new CollegeControl(CollegeControlDiv,map)
 
+  
+  var ChargeControlDiv = document.createElement('div');
+  var char = new ChargeControl(ChargeControlDiv,map)
+
+  var CareControlDiv = document.createElement('div');
+  var care = new CareControl(CareControlDiv,map)
+
   //  homeControlDiv.index = 1;
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(DeleteControlDiv);
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(HomeControlDiv);
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(MarketControlDiv);
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(HospitalControlDiv);
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(CollegeControlDiv);
-
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(ChargeControlDiv);
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(CareControlDiv);
 };
 
 //當select不同區域切換center
