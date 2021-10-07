@@ -5,7 +5,14 @@ class houseInfoType:
         self.addr = L[2]
         self.year = L[3]
         self.houseType = L[4]
-        self.price = L[5] if len(L) == 6 else L[5] + ',' + L[6]
+        if len(L) == 8:
+            self.price = L[5]
+            self.lat = L[6] 
+            self.lng = L[7] 
+        else:
+            self.price = L[5] + ',' + L[6]
+            self.lat = L[7] 
+            self.lng = L[8] 
     def string(self):
         return self.name + ',' + self.link + ',' + self.addr + ',' + self.year + ',' \
-                + self.houseType + ',' + self.price
+                + self.houseType + ',' + self.price + ',' + self.lat + ',' + self.lng

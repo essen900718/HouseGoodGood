@@ -13,14 +13,14 @@
 {% block body %}
 
 <body class="no-sidebar is-preload">
-  <div class="loader-wrapper">
+  <!-- <div class="loader-wrapper">
     <span class="loader"><span class="loader-inner"></span></span>
-      </div>
-    <script>
+      </div> -->
+    <!-- <script>
       $(window).on("load",function(){
         $(".loader-wrapper").fadeOut("slow");
       });
-    </script>
+    </script> -->
   <div id="page-wrapper">
     <!-- Header -->
     <div id="header">
@@ -58,14 +58,10 @@
         <option value="11">南港區</option>
         <option value="12">文山區</option>
       </select>
-      <input type="checkbox" id="c1" value="1" name="cb1">電動車
-      <input type="checkbox" id="c2" value="2" name="cb1">醫院
-      <input type="checkbox" id="c3" value="3" name="cb1">日照中心
-      <button id="btn">Delete Markers</button>
     </div>
-    
-    
+    <!-- Map -->
     <div id="map"></div>
+    
     <table class="table table-hover">
       <thead>
         <tr>
@@ -85,21 +81,69 @@
           <td class="year">{{ info.year }}</td>
           <td class="houseType">{{ info.houseType }}</td>
           <td class="price">{{ info.price }}</td>
+          <td class="la">{{ info.lat }}</td>
+          <td class="ln">{{ info.lng }}</td>
         </tr>
         {% endfor %}
       </tbody>
-    
-      {% for hos in hospital %}
+      
+      <tbody>
+      {% for market in marketlist %}
       <tr>
-        <td class="Hospital">{{ hos }}</td>
+        <td class="MarketName">{{ market.name }}</td>
+        <td class="MarketAdr">{{ market.addr }}</td>
+        <td class="MarketLat">{{ market.lat }}</td>
+        <td class="MarketLng">{{ market.lng }}</td>
       </tr>
       {% endfor %}
+    </tbody>
+
+    <tbody>
+      {% for hospital in hospitallist %}
+      <tr>
+        <td class="hospitalName">{{ hospital.name }}</td>
+        <td class="hospitalAdr">{{ hospital.addr }}</td>
+        <td class="hospitalLat">{{ hospital.lat }}</td>
+        <td class="hospitalLng">{{ hospital.lng }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
     
-      <div id="EF" d="{{chargestation}}">
-      </div>
-    
-      <!-- <div id="Hospital" d="{{hospital}}">
-      </div> -->
+      {% for charge in chargelist %}
+      <tr>
+        <td class="chargeName">{{ charge.name }}</td>
+        <td class="chargeAdr">{{ charge.addr }}</td>
+        <td class="chargeLat">{{ charge.lat }}</td>
+        <td class="chargeLng">{{ charge.lng }}</td>
+      </tr>
+      {% endfor %}
+
+      {% for senior in seniorlist %}
+      <tr>
+        <td class="seniorName">{{ senior.name }}</td>
+        <td class="seniorAdr">{{ senior.addr }}</td>
+        <td class="seniorLat">{{ senior.lat }}</td>
+        <td class="seniorLng">{{ senior.lng }}</td>
+      </tr>
+      {% endfor %}
+
+      {% for college in collegelist %}
+      <tr>
+        <td class="collegeName">{{ college.name }}</td>
+        <td class="collegeAdr">{{ college.addr }}</td>
+        <td class="collegeLat">{{ college.lat }}</td>
+        <td class="collegeLng">{{ college.lng }}</td>
+      </tr>
+      {% endfor %}
+
+      {% for care in carelist %}
+      <tr>
+        <td class="careName">{{ care.name }}</td>
+        <td class="careAdr">{{ care.addr }}</td>
+        <td class="careLat">{{ care.lat }}</td>
+        <td class="careLng">{{ care.lng }}</td>
+      </tr>
+      {% endfor %}
     </table>
 
     <!-- Footer -->
@@ -236,10 +280,7 @@
   <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}" type="text/javascript"></script>
   <script src="{{ url_for('static', filename='js/util.js') }}" type="text/javascript"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAui41PhiDPXFDiZcWUbp3h6mMCJ5Bjx6Q&callback=initMap&libraries=&v=weekly"
-    async>
-    </script>
+  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBURtuds2noKdeiTcxbenDd2DQyxSJ9p90&callback=initMap"></script> -->
   <script>
     $(".title").click(function () {
       var x = $(this).siblings("table")
