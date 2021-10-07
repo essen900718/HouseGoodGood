@@ -636,7 +636,8 @@ function setMarker(La, Ln, tent, Marker, Icon) {
 
   google.maps.event.addListener(marker, 'click', function () {
     infowindow.open(marker.get('map'), marker)
-    DeleteMarker(Marker, marker)
+    if(Marker == House)
+      DeleteMarker(Marker, marker)
     showNear(tempLa, tempLn, Markers)
   })
 
