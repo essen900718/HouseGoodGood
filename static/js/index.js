@@ -18,17 +18,16 @@ let hospa = document.getElementsByClassName('hospitalAdr')
 let hospla = document.getElementsByClassName('hospitalLat')
 let hospln = document.getElementsByClassName('hospitalLng')
 
-console.log(typeof(hospa[0]));
-console.log(hospla[0].textContent);
-console.log(hospln[0].textContent);
-console.log(Mn[0].textContent);
-console.log(typeof(hospn[0]));
-
+let collen = document.getElementsByClassName('collegeName')
+let collea = document.getElementsByClassName('collegeAdr')
+let collla = document.getElementsByClassName('collegeLat')
+let collln = document.getElementsByClassName('collegeLng')
 
 var House = []
 var Market = []
 var Markers = []
 var Hospital = []
+var College = []
 
 let pos ={lat: 25.042053466882443 , lng: 121.520583083073}
 
@@ -131,6 +130,23 @@ function MarketControl(controlDiv, map) {
       setMarker(Mla[i].textContent,Mln[i].textContent,content,Market,icon);
     }
     Markers.push(Market)
+
+    for(var i = 0 ; i < House.length ; i++) 
+    {
+      check = false
+      tempLa = House[i].getPosition().lat()
+      tempLn = House[i].getPosition().lng()
+      for(var e = 0 ; e < Market.length ; e++)
+      {
+        houseLa = Market[e].getPosition().lat()
+        houseLn = Market[e].getPosition().lng()
+        distance = getDistance(houseLn,houseLa,tempLn,tempLa)
+        if(distance < 1) check = true
+      }
+
+      if(check == false) House[i].setMap(null)
+    }
+
   });
 }
 
@@ -155,11 +171,73 @@ function HospitalControl(controlDiv, map) {
   google.maps.event.addDomListener(controlUI, 'click', function() {
     for(var i = 0 ; i < hospla.length ; i++) 
     {
-      var content = 'title : ' + hospn[i].textContent
+      var content = 'title : ' + hospa[i].textContent
       icon = 'http://maps.google.com/mapfiles/kml/pal4/icon63.png'
       setMarker(hospla[i].textContent,hospln[i].textContent,content,Hospital,icon);
     }
     Markers.push(Hospital)
+
+    for(var i = 0 ; i < House.length ; i++) 
+    {
+      check = false
+      tempLa = House[i].getPosition().lat()
+      tempLn = House[i].getPosition().lng()
+      for(var e = 0 ; e < Hospital.length ; e++)
+      {
+        houseLa = Hospital[e].getPosition().lat()
+        houseLn = Hospital[e].getPosition().lng()
+        distance = getDistance(houseLn,houseLa,tempLn,tempLa)
+        if(distance < 1) check = true
+      }
+
+      if(check == false) House[i].setMap(null)
+    }
+
+  });
+}
+
+function CollegeControl(controlDiv, map) {
+  controlDiv.style.padding = '5px';
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = 'yellow';
+  controlUI.style.border='1px solid';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Set map to London';
+  controlDiv.appendChild(controlUI);
+  var controlText = document.createElement('div');
+  controlText.style.fontFamily='Arial,sans-serif';
+  controlText.style.fontSize='12px';
+  controlText.style.paddingLeft = '4px';
+  controlText.style.paddingRight = '4px';
+  controlText.innerHTML = '<b>College<b>'
+  controlUI.appendChild(controlText);
+
+  // Setup click-event listener: simply set the map to London
+  google.maps.event.addDomListener(controlUI, 'click', function() {
+    for(var i = 0 ; i < hospla.length ; i++) 
+    {
+      var content = 'title : ' + collen[i].textContent
+      icon = 'http://maps.google.com/mapfiles/kml/pal3/icon31.png'
+      setMarker(collla[i].textContent,collln[i].textContent,content,College,icon);
+    }
+    Markers.push(College)
+
+    for(var i = 0 ; i < House.length ; i++) 
+    {
+      check = false
+      tempLa = House[i].getPosition().lat()
+      tempLn = House[i].getPosition().lng()
+      for(var e = 0 ; e < College.length ; e++)
+      {
+        houseLa = College[e].getPosition().lat()
+        houseLn = College[e].getPosition().lng()
+        distance = getDistance(houseLn,houseLa,tempLn,tempLa)
+        if(distance < 1) check = true
+      }
+
+      if(check == false) House[i].setMap(null)
+    }
   });
 }
 
@@ -176,6 +254,16 @@ function initMap() {
     mapTypeId: "terrain",
   });
 
+  for(var e = 0 ; e < la.length ; e++) 
+  {
+      var content = 'title : ' + hN[e].textContent + '</br>addr : ' + adr[e].textContent + '</br>time : ' + time[e].textContent 
+      + '</br>houseType : ' + hT[e].textContent + '</br>price : ' + p[e].textContent ;
+
+      icon = 'http://maps.google.com/mapfiles/kml/pal3/icon56.png'
+      setMarker(la[e].textContent,ln[e].textContent,content,House,icon);
+  }
+  Markers.push(House)
+
   var DeleteControlDiv = document.createElement('div');
   var Delete = new DeleteControl(DeleteControlDiv, map);
 
@@ -188,11 +276,15 @@ function initMap() {
   var HospitalControlDiv = document.createElement('div');
   var hosp = new HospitalControl(HospitalControlDiv,map)
 
+  var CollegeControlDiv = document.createElement('div');
+  var coll = new CollegeControl(CollegeControlDiv,map)
+
   //  homeControlDiv.index = 1;
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(DeleteControlDiv);
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(HomeControlDiv);
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(MarketControlDiv);
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(HospitalControlDiv);
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(CollegeControlDiv);
 
 };
 
@@ -270,7 +362,6 @@ function showNear(La,Ln,Markers){
       tempLa = element.getPosition().lat()
       tempLn = element.getPosition().lng()
       distance = getDistance(Ln,La,tempLn,tempLa)
-      console.log(distance);
       if(distance > 1)  element.setMap(null)
     });
   }
