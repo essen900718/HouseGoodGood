@@ -115,7 +115,7 @@ function HomeControl(controlDiv,map) {
       var content = 'title : ' + hN[e].textContent + '</br>addr : ' + adr[e].textContent + '</br>time : ' + time[e].textContent 
       + '</br>houseType : ' + hT[e].textContent + '</br>price : ' + p[e].textContent ;
 
-      icon = 'http://maps.google.com/mapfiles/kml/pal3/icon56.png'
+      icon = 'https://img.icons8.com/color/30/000000/exterior.png'
       setMarker(la[e].textContent,ln[e].textContent,content,House,icon);
     }
     Markers.push(House)
@@ -168,7 +168,10 @@ function MarketControl(controlDiv, map) {
         houseLa = Market[e].getPosition().lat()
         houseLn = Market[e].getPosition().lng()
         distance = getDistance(houseLn,houseLa,tempLn,tempLa)
-        if(distance < 1) check = true
+        if(distance < 1){
+          check = true
+          break
+        }
       }
 
       if(check == false) House[i].setMap(null)
@@ -200,7 +203,7 @@ function HospitalControl(controlDiv, map) {
     for(var i = 0 ; i < hospla.length ; i++) 
     {
       var content = 'title : ' + hospa[i].textContent
-      icon = 'http://maps.google.com/mapfiles/kml/pal4/icon63.png'
+      icon = 'https://img.icons8.com/external-justicon-flat-justicon/30/000000/external-hospital-hospital-justicon-flat-justicon.png'
       setMarker(hospla[i].textContent,hospln[i].textContent,content,Hospital,icon);
     }
     Markers.push(Hospital)
@@ -215,7 +218,10 @@ function HospitalControl(controlDiv, map) {
         houseLa = Hospital[e].getPosition().lat()
         houseLn = Hospital[e].getPosition().lng()
         distance = getDistance(houseLn,houseLa,tempLn,tempLa)
-        if(distance < 1) check = true
+        if(distance < 1){
+          check = true
+          break
+        }
       }
 
       if(check == false) House[i].setMap(null)
@@ -248,7 +254,7 @@ function CollegeControl(controlDiv, map) {
     for(var i = 0 ; i < collla.length ; i++) 
     {
       var content = 'title : ' + collen[i].textContent
-      icon = 'http://maps.google.com/mapfiles/kml/pal3/icon31.png'
+      icon = 'https://img.icons8.com/external-wanicon-flat-wanicon/30/000000/external-school-education-wanicon-flat-wanicon.png'
       setMarker(collla[i].textContent,collln[i].textContent,content,College,icon);
     }
     Markers.push(College)
@@ -263,7 +269,10 @@ function CollegeControl(controlDiv, map) {
         houseLa = College[e].getPosition().lat()
         houseLn = College[e].getPosition().lng()
         distance = getDistance(houseLn,houseLa,tempLn,tempLa)
-        if(distance < 1) check = true
+        if(distance < 1) {
+          check = true
+          break
+        }
       }
 
       if(check == false) House[i].setMap(null)
@@ -295,7 +304,7 @@ function ChargeControl(controlDiv, map) {
     for(var i = 0 ; i < chargela.length ; i++) 
     {
       var content = 'title : ' + chargen[i].textContent
-      icon = 'http://maps.google.com/mapfiles/kml/pal2/icon29.png'
+      icon = 'https://img.icons8.com/emoji/30/000000/motor-scooter.png'
       setMarker(chargela[i].textContent,chargeln[i].textContent,content,Charge,icon);
     }
     Markers.push(Charge)
@@ -311,7 +320,10 @@ function ChargeControl(controlDiv, map) {
         houseLn = Charge[e].getPosition().lng()
         distance = getDistance(houseLn,houseLa,tempLn,tempLa)
         console.log(distance);
-        if(distance < 1) check = true
+        if(distance < 1) {
+          check = true
+          break
+        }
       }
 
       if(check == false) House[i].setMap(null)
@@ -343,7 +355,7 @@ function CareControl(controlDiv, map) {
     for(var i = 0 ; i < carela.length ; i++) 
     {
       var content = 'title : ' + chargen[i].textContent
-      icon = 'http://maps.google.com/mapfiles/kml/pal4/icon55.png'
+      icon = 'https://img.icons8.com/external-justicon-flat-justicon/30/000000/external-healthcare-hospital-and-medical-justicon-flat-justicon.png'
       setMarker(carela[i].textContent,careln[i].textContent,content,Care,icon);
     }
     Markers.push(Care)
@@ -358,7 +370,10 @@ function CareControl(controlDiv, map) {
         houseLa = Care[e].getPosition().lat()
         houseLn = Care[e].getPosition().lng()
         distance = getDistance(houseLn,houseLa,tempLn,tempLa)
-        if(distance < 1) check = true
+        if(distance < 1) {
+          check = true
+          break
+        }
       }
 
       if(check == false) House[i].setMap(null)
@@ -484,7 +499,7 @@ function initMap() {
       var content = 'title : ' + hN[e].textContent + '</br>addr : ' + adr[e].textContent + '</br>time : ' + time[e].textContent 
       + '</br>houseType : ' + hT[e].textContent + '</br>price : ' + p[e].textContent ;
 
-      icon = 'http://maps.google.com/mapfiles/kml/pal3/icon56.png'
+      icon = 'https://img.icons8.com/color/30/000000/exterior.png'
       setMarker(la[e].textContent,ln[e].textContent,content,House,icon);
   }
   Markers.push(House)
