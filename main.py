@@ -44,7 +44,7 @@ with open('UserData/Market.txt', 'r', encoding = 'UTF-8') as m:
      marketinfo.extend([MarketInfo(x[:-1].split(',')) for x in m.readlines()])
 
 with open('UserData/wheelchair.txt', 'r', encoding = 'UTF-8') as m:
-     Wheelchairinfo.extend([wheelchairInfo(x.split(',')) for x in m.readlines()])
+     Wheelchairinfo.extend([wheelchairInfo(x[:-1].split(',')) for x in m.readlines()])
 
 #醫院
 with open('UserData/Hospital.txt', 'r', encoding = 'UTF-8') as m:
