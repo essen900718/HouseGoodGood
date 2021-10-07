@@ -67,7 +67,6 @@ with open('UserData/長期照護.txt', 'r', encoding = 'UTF-8') as m:
     careinfo.extend([careInfo(x[:-1].split(',')) for x in m.readlines()])
 
 print(chargeinfo[0].lat)
-print(Wheelchairinfo[0].lat)
 
 @app.route('/')
 def home():

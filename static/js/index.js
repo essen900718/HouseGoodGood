@@ -145,14 +145,14 @@ function MarketControl(controlDiv, map) {
     for(var i = 0 ; i < Mla.length ; i++) 
     {
       var content = 'title : ' + Mn[i].textContent
-      icon = 'https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-wheelchair-hospital-justicon-flat-justicon.png'
+      icon = 'https://img.icons8.com/external-justicon-flat-justicon/30/000000/external-wheelchair-hospital-justicon-flat-justicon.png'
       setMarker(Mla[i].textContent,Mln[i].textContent,content,Market,icon);
     }
 
     for(var i = 0 ; i < wheella.length ; i++) 
     {
       var content = 'title : ' + wheeln[i].textContent
-      icon = 'https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-wheelchair-hospital-justicon-flat-justicon.png'
+      icon = 'https://img.icons8.com/external-justicon-flat-justicon/30/000000/external-wheelchair-hospital-justicon-flat-justicon.png'
       setMarker(wheella[i].textContent,wheelln[i].textContent,content,Market,icon);
     }
 
