@@ -105,6 +105,49 @@ function SelectionControl(controlDiv, map) {
   });
 }
 
+function PriceControl(controlDiv, map) {
+  controlDiv.style.padding = '10px';
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#a281b4';
+  //controlUI.style.border='1px solid';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Set map to London';
+  controlDiv.appendChild(controlUI);
+  var controlText = document.createElement('div');
+  controlText.style.fontFamily = 'Open Sans Condensed';
+  controlText.style.fontSize = '12px';
+  controlText.style.color = "rgb(255,255,255)";
+  controlText.style.paddingLeft = '4px';
+  controlText.style.paddingRight = '4px';
+  controlText.innerHTML =
+  '<div class="selection-bar">\
+      <select id = "select" >\
+    <option value="0">請選擇價格</option>\
+    <option value="1">0~200萬</option>\
+    <option value="2">201~400萬</option>\
+    <option value="3">401~600萬</option>\
+    <option value="4">601~800萬</option>\
+    <option value="5">801~1000萬</option>\
+    <option value="6">1001~1200萬</option>\
+    <option value="7">1201~1400萬</option>\
+    <option value="8">1401~1600萬</option>\
+    <option value="9">1601~1800萬</option>\
+    <option value="10">1801~2000萬</option>\
+    <option value="11">2001~2200萬</option>\
+    <option value="12">2201~2400萬</option>\
+  </select>\
+  </div > '
+  controlUI.appendChild(controlText);
+
+  // Setup click-event listener: simply set the map to London
+  google.maps.event.addDomListener(controlUI, 'click', function () {
+    //當select不同區域切換center
+      select.addEventListener('change', function () {
+      });
+  });
+}
+
 //Delete Marker
 function DeleteControl(controlDiv, map) {
   controlDiv.style.padding = '10px';
@@ -555,6 +598,9 @@ function initMap() {
   var SelectionControlDiv = document.createElement('div');
   var selection = new SelectionControl(SelectionControlDiv, map)
 
+  var PriceControlDiv = document.createElement('div');
+  var Price = new PriceControl(PriceControlDiv,map)
+
   //  homeControlDiv.index = 1;
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(DeleteControlDiv);
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(HomeControlDiv);
@@ -564,6 +610,7 @@ function initMap() {
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(ChargeControlDiv);
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(CareControlDiv);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(SelectionControlDiv);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(PriceControlDiv);
 };
 
 // //當select不同區域切換center
