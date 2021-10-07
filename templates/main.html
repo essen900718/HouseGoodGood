@@ -102,6 +102,16 @@
     </tbody>
 
     <tbody>
+      {% for wheel in wheellist %}
+      <tr>
+        <td class="wheelName">{{ wheel.name }}</td>
+        <td class="wheelLat">{{ wheel.lat }}</td>
+        <td class="wheelLng">{{ wheel.lng }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+    <tbody>
       {% for hospital in hospitallist %}
       <tr>
         <td class="hospitalName">{{ hospital.name }}</td>
@@ -283,7 +293,7 @@
   <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}" type="text/javascript"></script>
   <script src="{{ url_for('static', filename='js/util.js') }}" type="text/javascript"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBURtuds2noKdeiTcxbenDd2DQyxSJ9p90&callback=initMap"></script>
+  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBURtuds2noKdeiTcxbenDd2DQyxSJ9p90&callback=initMap"></script> -->
   <script>
     $(".title").click(function () {
       var x = $(this).siblings("table")

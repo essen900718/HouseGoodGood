@@ -33,6 +33,10 @@ let carea = document.getElementsByClassName('careAdr')
 let carela = document.getElementsByClassName('careLat')
 let careln = document.getElementsByClassName('careLng')
 
+let wheeln = document.getElementsByClassName('wheelName')
+let wheella = document.getElementsByClassName('wheelLat')
+let wheelln = document.getElementsByClassName('wheelLng')
+
 var House = []
 var Market = []
 var Markers = []
@@ -133,7 +137,7 @@ function MarketControl(controlDiv, map) {
   controlText.style.color = "rgb(255,255,255)";
   controlText.style.paddingLeft = '4px';
   controlText.style.paddingRight = '4px';
-  controlText.innerHTML = '<b>Market<b>'
+  controlText.innerHTML = '<b>WheelChair<b>'
   controlUI.appendChild(controlText);
 
   // Setup click-event listener: simply set the map to London
@@ -141,9 +145,17 @@ function MarketControl(controlDiv, map) {
     for(var i = 0 ; i < Mla.length ; i++) 
     {
       var content = 'title : ' + Mn[i].textContent
-      icon = 'http://maps.google.com/mapfiles/kml/pal3/icon26.png'
+      icon = 'https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-wheelchair-hospital-justicon-flat-justicon.png'
       setMarker(Mla[i].textContent,Mln[i].textContent,content,Market,icon);
     }
+
+    for(var i = 0 ; i < wheella.length ; i++) 
+    {
+      var content = 'title : ' + wheeln[i].textContent
+      icon = 'https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-wheelchair-hospital-justicon-flat-justicon.png'
+      setMarker(wheella[i].textContent,wheelln[i].textContent,content,Market,icon);
+    }
+
     Markers.push(Market)
 
     for(var i = 0 ; i < House.length ; i++) 
